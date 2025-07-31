@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Sign Up - LearnHub</title>
+  <link rel="stylesheet" href="../../styles/index.css" />
+  <style>
+    .auth-container {
+      max-width: 400px;
+      margin: 5rem auto;
+      background: #fff;
+      padding: 2rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .auth-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .auth-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .auth-container input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #3498db;
+      user-select: none;
+    }
+
+    .auth-container .btn {
+      text-align: center;
+      margin-top: 1rem;
+      background: #3498db;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .auth-container .btn:hover {
+      background: #2980b9;
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .toggle-link a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+      <nav class="container">
+        <div class="logo">LearnHub</div>
+        <div class="nav-content">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="auth-links">
+            <a href="views/login.html" class="login">Login</a>
+            <a href="#" class="signup">Sign Up</a>
+          </div>
+        </div>
+        <div class="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+<div class="auth-container" id="auth-box">
+  <h2 id="form-title">Sign In</h2>
+  <form id="auth-form">
+    <input type="email" placeholder="Email" required />
+    
+<div class="password-wrapper">
+  <input type="password" placeholder="Password" id="password-field" required />
+  <button type="button" class="toggle-password" id="toggle-password">Show</button>
+</div>
+    
+    <button class="btn" type="submit">Login</button>
+  </form>
+
+  <div class="toggle-link" id="toggle-msg">
+    NOOB? <a href="#" id="toggle-link">Sign Up</a>
+  </div>
+</div>
+
+<script>
+  const formTitle = document.getElementById('form-title');
+  const toggleLink = document.getElementById('toggle-link');
+  const toggleMsg = document.getElementById('toggle-msg');
+  const passwordField = document.getElementById('password-field');
+  const togglePassword = document.getElementById('toggle-password');
+
+  toggleLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isLogin = formTitle.textContent === 'Sign In';
+    formTitle.textContent = isLogin ? 'Sign Up' : 'Sign In';
+    toggleMsg.innerHTML = isLogin
+      ? 'Already have an account? <a href="#" id="toggle-link">Login</a>'
+      : "Don't have an account? <a href='#' id='toggle-link'>Sign Up</a>";
+
+    // Re-attach the toggle event listener
+    document.getElementById('toggle-link').addEventListener('click', (ev) => {
+      ev.preventDefault();
+      toggleLink.click();
+    });
+  });
+
+  togglePassword.addEventListener('click', () => {
+    const type = passwordField.type === 'password' ? 'text' : 'password';
+    passwordField.type = type;
+    togglePassword.textContent = type === 'password' ? 'Show' : 'Hide';
+  });
+</script>
+
+</body>
+</html>
