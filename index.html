@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LearnHub - Online Learning Platform</title>
     <link rel="stylesheet" href="./styles/index.css" />
+    
   </head>
   <body>
     <header>
@@ -32,6 +33,7 @@
 
     <section class="hero">
       <div class="container">
+        <h1 id="welcomeTime">  </h1>
         <h1>Learn Anything, Anywhere</h1>
         <p>
           Join thousands of students learning new skills with our comprehensive
@@ -99,3 +101,17 @@
     </footer>
   </body>
 </html>
+
+<script>
+        var d = new Date();
+        hour = d.getHours();
+        console.log(hour);
+        console.log(document.getElementById("welcomeTime"))
+        if(hour<12)
+          document.getElementById("welcomeTime").innerHTML = "Good Morning";
+        else if(hour<16)
+          document.getElementById("welcomeTime").innerHTML = "Good Afternoon";
+        else
+          document.getElementById("welcomeTime").innerHTML = "Good Evening";
+
+    </script>
