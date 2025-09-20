@@ -95,6 +95,10 @@ nav {
   gap: 2rem;
 }
 
+#welcomeTime{
+  font-size: 5rem;
+  color: #2c3e50;
+}
 .hero {
   background: #f8f9fa;
   padding: 4rem 0;
