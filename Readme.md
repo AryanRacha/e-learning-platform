@@ -1,1 +1,1 @@
-# E-Learning Platform
+# E-Laerning Platform
