@@ -25,7 +25,6 @@ export const AppContextProvider = (props) => {
   };
 
   //fetch user courses
-
   const fetchUserEnrolledCourses = async () => {
     setEnrolledCourses(dummyCourses);
   };

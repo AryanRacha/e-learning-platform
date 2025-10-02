@@ -7,16 +7,16 @@ import CallToAction from "../../components/student/CallToAction";
 import Footer from "../../components/student/Footer";
 
 const Home = () => {
-    return(
-      <div className="flex flex-col items-center space-y-7 text-center">
-        <Hero/>
-        <Companies />
-        <CourseSection />
-        <TestimonialsSection/>
-        <CallToAction/>
-        <Footer/>
-      </div>
-    )
-}
+  return (
+    <div className="flex flex-col items-center space-y-7 text-center">
+      <Hero />
+      <Companies />
+      <CourseSection />
+      <TestimonialsSection />
+      <CallToAction />
+      <Footer />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
