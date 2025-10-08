@@ -102,8 +102,6 @@ export const purchaseCourse = async (req, res) => {
       },
     });
 
-    console.log("session: ", session);
-
     res.json({
       success: true,
       session_url: session.url,
