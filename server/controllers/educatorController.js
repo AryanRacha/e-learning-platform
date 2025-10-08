@@ -15,12 +15,12 @@ export const updateRoleToEducator = async (req, res) => {
     });
 
     res.json({
-      sucess: true,
+      success: true,
       message: "You can publish a curse now",
     });
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }
@@ -31,7 +31,7 @@ export const addCourse = async (req, res) => {
   try {
     const { courseData } = req.body;
     const imageFile = req.file;
-    const educatorId = req.auth.userId;
+    // const educatorId = req.auth.userId;
 
     if (!imageFile) {
       return res
@@ -40,7 +40,7 @@ export const addCourse = async (req, res) => {
     }
 
     const parsedCourseData = await JSON.parse(courseData);
-    parsedCourseData.educator = educatorId;
+    // parsedCourseData.educator = educatorId;
     const newCourse = await Course.create(parsedCourseData);
 
     const imageUpload = await cloudinary.uploader.upload(imageFile.path);
@@ -50,7 +50,7 @@ export const addCourse = async (req, res) => {
     res.json({ success: true, message: "Course Added" });
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }
@@ -63,12 +63,12 @@ export const getEducatorCourses = async (req, res) => {
 
     const courses = await Course.find({ educator });
     res.json({
-      sucess: true,
+      success: true,
       courses,
     });
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }
@@ -110,7 +110,7 @@ export const educatorDashboardData = async (req, res) => {
     }
 
     res.json({
-      sucess: true,
+      success: true,
       dashboardData: {
         totalEarnings,
         enrolledStudentsData,
@@ -119,7 +119,7 @@ export const educatorDashboardData = async (req, res) => {
     });
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }
@@ -146,12 +146,12 @@ export const getEnrolledStudentsData = async (req, res) => {
     }));
 
     res.json({
-      sucess: true,
+      success: true,
       enrolledStudents,
     });
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }

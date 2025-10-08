@@ -16,7 +16,7 @@ export const protectEducator = async (req, res, next) => {
     next();
   } catch (error) {
     res.json({
-      sucess: false,
+      success: false,
       message: error.message,
     });
   }
