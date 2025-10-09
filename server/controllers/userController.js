@@ -98,7 +98,7 @@ export const purchaseCourse = async (req, res) => {
       line_items: line_items,
       mode: "payment",
       metadata: {
-        purchase: newPurchase._id.toString(),
+        purchaseId: newPurchase._id.toString(),
       },
     });
 
@@ -155,7 +155,7 @@ export const updateUserCourseProgress = async (req, res) => {
 export const getUserCourseProgress = async (req, res) => {
   try {
     const userId = req.auth.userId;
-    const { courseId } = req.params;
+    const { courseId } = req.body;
     const progressData = await CourseProgress.findOne({ userId, courseId });
 
     res.json({
@@ -215,7 +215,7 @@ export const addUserRating = async (req, res) => {
 
     res.json({
       success: true,
-      meassage: "Rating Added",
+      message: "Rating Added",
     });
   } catch (error) {
     res.json({

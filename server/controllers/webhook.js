@@ -16,8 +16,6 @@ export const clerkWebhook = async (req, res) => {
 
     const { data, type } = req.body;
 
-    console.log("data: ", data, "\n\ntype: ", type);
-
     switch (type) {
       case "user.created": {
         const userData = {
@@ -55,7 +53,6 @@ export const clerkWebhook = async (req, res) => {
         break;
     }
   } catch (error) {
-    console.log(error);
     return res.json({ success: false, message: error.message });
   }
 };

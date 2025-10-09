@@ -1,5 +1,6 @@
 import { clerkClient } from "@clerk/express";
 import { v2 as cloudinary } from "cloudinary";
+import User from "../models/User.js";
 import Course from "../models/Course.js";
 import Purchase from "../models/Purchase.js";
 
@@ -31,7 +32,7 @@ export const addCourse = async (req, res) => {
   try {
     const { courseData } = req.body;
     const imageFile = req.file;
-    // const educatorId = req.auth.userId;
+    const educatorId = req.auth.userId;
 
     if (!imageFile) {
       return res
@@ -40,7 +41,7 @@ export const addCourse = async (req, res) => {
     }
 
     const parsedCourseData = await JSON.parse(courseData);
-    // parsedCourseData.educator = educatorId;
+    parsedCourseData.educator = educatorId;
     const newCourse = await Course.create(parsedCourseData);
 
     const imageUpload = await cloudinary.uploader.upload(imageFile.path);
